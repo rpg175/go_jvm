@@ -17,4 +17,9 @@ func readContentPool(reader *ClassReader) ConstantPool {
 	return cp
 }
 
-
+func (self ConstantPool) getConstantInfo(index uint16) ConstantInfo {
+	if cpInfo := self[index]; cpInfo != nil {
+		return cpInfo
+	}
+	painc("Invalid constant pool index!")
+}
