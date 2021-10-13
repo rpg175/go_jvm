@@ -38,11 +38,11 @@ func newConstantInfo(tag uint8, cp ConstantPool) ConstantInfo {
 	case CONSTANT_String:return &ConstantStringInfo{}
 	case CONSTANT_Class:return &ConstantClassInfo{}
 	case CONSTANT_Fieldref:
-		return &ConstantFieldrefInfo{ConstantMemberrefInfo{cp:cp}}
+		return &ConstantFieldrefInfo{ConstantMemberRefInfo{cp:cp}}
 	case CONSTANT_Methodref:
-		return &ConstantMethodrefInfo{ConstantMemberrefInfo{cp:cp}}
+		return &ConstantMethodrefInfo{ConstantMemberRefInfo{cp:cp}}
 	case CONSTANT_InterfaceMethodref:
-		return &ConstantMethodrefInfo{ConstantMemberrefInfo{cp:cp}}
+		return &ConstantMethodrefInfo{ConstantMemberRefInfo{cp:cp}}
 	case CONSTANT_NameAndType: return &ConstatntNameAndTypeInfo{}
 	case CONSTANT_MethodType: return &ConstantMethodTypeInfo{}
 	case CONSTANT_MethodHandle: return &ConstantMethodTypeInfo{}
