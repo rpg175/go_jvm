@@ -44,6 +44,12 @@ func XmlVisitor (shape Shape) {
 	fmt.Println(string(bytes))
 }
 
+type Info struct {
+	Namespace string
+	Name string
+	OtherThings string
+}
+
 func main() {
 	c := Circle{10}
 	r:= Rectangle{100,200}
