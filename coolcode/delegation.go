@@ -43,6 +43,29 @@ type Clicker interface {
 	Click()
 }
 
+func (label Label) Paint() {
+	fmt.Printf("%p:Label.Paint(%q)\n",&label,label.Text)
+}
+
+//因为这个接口可以通过 Label 的嵌入带到新的结构体，
+//所以，可以在 Button 中可以重载这个接口方法以
+// Override
+func (button Button) Paint() {
+	fmt.Printf("Button.Paint(%s)\n",button.Text)
+}
+
+func (button Button) Click() {
+	fmt.Printf("Button.Click(%s)\n",button.Text)
+}
+
+func (listBox ListBox) Paint() {
+	fmt.Printf("ListBox.Paint(%q)\n",listBox.Texts)
+}
+
+func (listBox ListBox) Click() {
+	fmt.Printf("ListBox.Click(%q)\n",listBox.Texts)
+}
+
 func main() {
 	label := Label{Widget{10,10},"State:"}
 	label.X = 11
