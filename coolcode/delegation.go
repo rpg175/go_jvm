@@ -71,4 +71,18 @@ func main() {
 	label.X = 11
 	label.Y = 12
 	fmt.Printf("label %v",label)
+
+	button1 := Button{Label{Widget{10,70},"OK"}}
+	listBox := ListBox{Widget{10,40},[]string{"AL","AK","AZ","AR"},0}
+	for _, painter := range []Painter{label, listBox, button1}{
+		painter.Paint()
+	}
+
+	for _,widget := range []interface{}{label,listBox,button1} {
+		widget.(Painter).Paint()
+		if clicker, ok := widget.(Clicker); ok {
+			clicker.Click()
+		}
+		fmt.Println()
+	}
 }
