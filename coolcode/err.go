@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/binary"
+	"fmt"
 )
 
 // 长度不够，少一个Weight
@@ -25,4 +26,27 @@ func (p *Person) read(data interface{}) {
 func (p *Person) ReadName() *Person {
 	p.read(&p.Name)
 	return p
+}
+
+func (p *Person) ReadAge() *Person {
+	p.read(&p.Age)
+	return p
+}
+
+func (p *Person) ReadWeight() *Person{
+	p.read(&p.Weight)
+	return p
+}
+
+func (p *Person) Print() *Person {
+	if p.err == nil {
+		fmt.Printf("Name=%s, Age=%d,Weight=%d\n",p.Name,p.Age,p.Weight)
+	}
+	return p
+}
+
+func main() {
+	p := Person{}
+	p.ReadName().ReadAge().ReadWeight().Print()
+	fmt.Println(p.err) // EOF
 }
