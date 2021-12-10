@@ -45,6 +45,7 @@ func (p *Person) Print() *Person {
 	return p
 }
 
+// TODO:需要补充错误机制
 func main() {
 	p := Person{}
 	p.ReadName().ReadAge().ReadWeight().Print()
