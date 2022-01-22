@@ -8,7 +8,7 @@ import "fmt"
 func echo(nums []int) <-chan int {
 	out := make(chan int)
 	go func() {
-		for _,n:=range nums {
+		for _, n := range nums {
 			out <- n
 		}
 		close(out)
@@ -20,8 +20,8 @@ func echo(nums []int) <-chan int {
 func sq(in <-chan int) <-chan int {
 	out := make(chan int)
 	go func() {
-		for n:= range in {
-			out <- n*n
+		for n := range in {
+			out <- n * n
 		}
 		close(out)
 	}()
@@ -32,7 +32,7 @@ func sq(in <-chan int) <-chan int {
 func odd(in <-chan int) <-chan int {
 	out := make(chan int)
 	go func() {
-		for n:= range in {
+		for n := range in {
 			if n%2 != 0 {
 				out <- n
 			}
@@ -47,7 +47,7 @@ func sum(in <-chan int) <-chan int {
 	out := make(chan int)
 	go func() {
 		var sum = 0
-		for n:=range in {
+		for n := range in {
 			sum += n
 		}
 		out <- sum
@@ -59,26 +59,26 @@ func sum(in <-chan int) <-chan int {
 // 下面的代码类似于我们执行了Unix/Linux命令：
 // echo $nums | sq | sum
 func test1() {
-	var nums = []int{1,2,3,4,5,6,7,8,9,10}
-	for n:= range sum(sq(odd(echo(nums)))) {
+	var nums = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	for n := range sum(sq(odd(echo(nums)))) {
 		fmt.Println(n)
 	}
 }
 
-type EchoFunc func([]int) (<- chan int)
-type PipeFunc func(<- chan int) (<- chan int)
+type EchoFunc func([]int) <-chan int
+type PipeFunc func(<-chan int) <-chan int
 
-func pipeline(nums []int,echo EchoFunc, pipeFns ... PipeFunc) <- chan int {
+func pipeline(nums []int, echo EchoFunc, pipeFns ...PipeFunc) <-chan int {
 	ch := echo(nums)
-	for i:= range pipeFns {
+	for i := range pipeFns {
 		ch = pipeFns[i](ch)
 	}
 	return ch
 }
 
 func test2() {
-	var nums = []int{1,2,3,4,5,6,7,8,9,10}
-	for n:= range pipeline(nums,echo,odd,sq,sum) {
+	var nums = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	for n := range pipeline(nums, echo, odd, sq, sum) {
 		fmt.Println(n)
 	}
 }

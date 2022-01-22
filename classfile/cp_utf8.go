@@ -15,7 +15,7 @@ func decodeMUTF8(bytes []byte) string {
 }
 
 type ConstantStringInfo struct {
-	cp ConstantPool
+	cp          ConstantPool
 	stringIndex uint16
 }
 
@@ -28,7 +28,7 @@ func (self *ConstantStringInfo) String() string {
 }
 
 type ConstantClassInfo struct {
-	cp ConstantPool
+	cp        ConstantPool
 	nameIndex uint16
 }
 

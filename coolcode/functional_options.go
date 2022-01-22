@@ -6,28 +6,28 @@ import (
 )
 
 type Server struct {
-	Addr string
-	Port int
-	Protocol string
-	Timeout time.Duration
+	Addr        string
+	Port        int
+	Protocol    string
+	Timeout     time.Duration
 	MaxConnects int
-	TLS *tls.Config
+	TLS         *tls.Config
 }
 
-func NewDefaultServer(addr string, port int) (*Server,error) {
-	return &Server{addr,port,"tcp",30 * time.Second,100,nil},nil
+func NewDefaultServer(addr string, port int) (*Server, error) {
+	return &Server{addr, port, "tcp", 30 * time.Second, 100, nil}, nil
 }
 
-func NewTLSServer(addr string,port int ,tls *tls.Config) (*Server,error) {
-	return &Server{addr,port,"tcp",30*time.Second,100,tls},nil
+func NewTLSServer(addr string, port int, tls *tls.Config) (*Server, error) {
+	return &Server{addr, port, "tcp", 30 * time.Second, 100, tls}, nil
 }
 
-func NewServerWithTimeout(addr string,port int,timeout time.Duration) (*Server, error) {
-	return &Server{addr,port,"tcp",timeout,100,nil},nil
+func NewServerWithTimeout(addr string, port int, timeout time.Duration) (*Server, error) {
+	return &Server{addr, port, "tcp", timeout, 100, nil}, nil
 }
 
-func NewServerTLSServerWithMaxConnAndTimeout(addr string,port int,maxConnects int,timeout time.Duration,tls *tls.Config)(*Server, error) {
-	return &Server{addr,port,"tcp",30*time.Second,maxConnects,tls},nil
+func NewServerTLSServerWithMaxConnAndTimeout(addr string, port int, maxConnects int, timeout time.Duration, tls *tls.Config) (*Server, error) {
+	return &Server{addr, port, "tcp", 30 * time.Second, maxConnects, tls}, nil
 }
 
 //使用一个builder类来做包装
@@ -47,21 +47,21 @@ func (sb *ServerBuilder) WithProtocol(protocol string) *ServerBuilder {
 	return sb
 }
 
-func (sb *ServerBuilder) WithMaxConnect(maxConnect int) *ServerBuilder{
+func (sb *ServerBuilder) WithMaxConnect(maxConnect int) *ServerBuilder {
 	sb.Server.MaxConnects = maxConnect
 	return sb
 }
 
-func (sb *ServerBuilder) WithTimeOut( timeout time.Duration) *ServerBuilder {
+func (sb *ServerBuilder) WithTimeOut(timeout time.Duration) *ServerBuilder {
 	sb.Server.Timeout = timeout
 	return sb
 }
-func (sb *ServerBuilder) WithTLS( tls *tls.Config) *ServerBuilder {
+func (sb *ServerBuilder) WithTLS(tls *tls.Config) *ServerBuilder {
 	sb.Server.TLS = tls
 	return sb
 }
-func (sb *ServerBuilder) Build() (Server) {
-	return  sb.Server
+func (sb *ServerBuilder) Build() Server {
+	return sb.Server
 }
 
 type Option func(*Server)
@@ -92,12 +92,12 @@ func TLS(tls *tls.Config) Option {
 
 func NewServer(addr string, port int, options ...func(*Server)) (*Server, error) {
 	srv := Server{
-		Addr:     addr,
-		Port:     port,
-		Protocol: "tcp",
-		Timeout:  30 * time.Second,
+		Addr:        addr,
+		Port:        port,
+		Protocol:    "tcp",
+		Timeout:     30 * time.Second,
 		MaxConnects: 1000,
-		TLS:      nil,
+		TLS:         nil,
 	}
 	for _, option := range options {
 		option(&srv)
