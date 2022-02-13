@@ -3,30 +3,33 @@ package main
 import "fmt"
 
 func main() {
-	c1 := 'a'
-	fmt.Println(c1) //97
-	c2 := '6'
-	fmt.Println(c2) //54
-	c3 := '-'
-	fmt.Println(c3) //45
-	c4 := 'c'
-	fmt.Println(c4) //99
-	c5 := '中'
-	fmt.Println(c5)         //20013
-	fmt.Printf("%c \n", c5) //中
+	var s1 = "就是这条街最靓的崽"
+	fmt.Println(s1)
 
-	//转义字符
-	//\n 换行
-	fmt.Println("aaa\nbbb")
-	//\b 退格
-	fmt.Println("aaa\bbbb")
-	//\r 光标回到本行开头，后续输入就会替换原有的字符
-	fmt.Println("aaaaa\rbbb")
-	//\t 制表符
-	fmt.Println("aaa\tbb")
-	//\"
-	fmt.Println("\"Golang\"")
-	//\'
-	fmt.Println("'Golang'")
+	//字符串是不可以变的：指的是字符串一旦定义好，其中的字符的值不能改变 //s2[1] = 't'报错
+	var s2 string = "就是这条街最靓的崽"
+	s2 = "def"
+	fmt.Println(s2)
 
+	//字符串：
+	//没有特殊字符，用""
+	//有特殊字符，用``
+	var s3 string = "就是这条街最靓的崽"
+	fmt.Println(s3)
+	var s4 string = `func main() {
+					var age int
+					age = 18
+					fmt.Printf("age %v", age)
+				   }`
+	fmt.Println(s4)
+
+	s5 := "abc" + "efg"
+	s5 += "h"
+	fmt.Println(s5) //abcefgh
+
+	//可读性的测试
+	s6 := "abc" + "efg" +
+		"add" +
+		"ccc"
+	fmt.Println(s6)
 }
