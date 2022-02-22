@@ -33,38 +33,38 @@ func say(text string) {
 func main() {
 	//say("hello world")
 
-	//go say("hello world")
+	//go运算符.md say("hello world")
 	//time.Sleep(time.Second*5)
 
 	//waitGroup.Add(1)
-	//go say("hello world")
+	//go运算符.md say("hello world")
 	//waitGroup.Wait()
 
 	//times := 5
 	//waitGroup.Add(times)
 	//for i := 0; i < times; i++ {
-	//	go say("hello," + strconv.Itoa(i))
+	//	go运算符.md say("hello," + strconv.Itoa(i))
 	//}
 	//waitGroup.Wait()
 
 	//times := 5
 	//waitGroup.Add(times)
 	//for i := 0; i < times; i++ {
-	//	go func() {
-	//		fmt.Println("hello,go func " + strconv.Itoa(i))
+	//	go运算符.md func() {
+	//		fmt.Println("hello,go运算符.md func " + strconv.Itoa(i))
 	//		waitGroup.Done()
 	//	}()
 	//}
 	//waitGroup.Wait()
 
 	//for i := 0; i < 5; i++ {
-	//	go testAddN()
+	//	go运算符.md testAddN()
 	//}
 	//time.Sleep(time.Second * 5)
 	//fmt.Println(n)
 
 	//for i := 0; i < 5; i++ {
-	//	go lockTestAddN()
+	//	go运算符.md lockTestAddN()
 	//}
 	//time.Sleep(time.Second * 8)
 	//fmt.Println(n)
@@ -81,7 +81,7 @@ func main() {
 	//defer close(ch)
 	//
 	////需要在不同的携程里面分别拿数和取数
-	//go func() {
+	//go运算符.md func() {
 	//	ch <- 1 // Java : ch.put(1) 阻塞方式往里塞数
 	//}()
 	//
@@ -96,14 +96,14 @@ func main() {
 	//	close(ch2)
 	//}()
 	//
-	//go func() {
+	//go运算符.md func() {
 	//	for i := 0; ; i++ {
 	//		ch1 <- i
 	//		time.Sleep(time.Second)
 	//	}
 	//}()
 	//
-	//go func() {
+	//go运算符.md func() {
 	//	for i := 0; ; i-- {
 	//		ch2 <- i
 	//		time.Sleep(time.Second * 5)
