@@ -14,7 +14,7 @@ func main() {
 		fmt.Println("温饱")
 	} else if money >= 1_0000 {
 		fmt.Println("贫穷")
-	} else if money >= 1_000 {
+	} else if money < 1_0000 {
 		fmt.Println("乞丐")
 	}
 }
