@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	var count int = 20
 	if count < 30 {
-		fmt.Printf("口罩不足，只剩 %v", count)
+		fmt.Printf("资金不足，只剩 %v", count)
 	}
 	fmt.Println()
 	if age := 36; age > 35 {
