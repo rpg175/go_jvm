@@ -21,4 +21,16 @@ func main() {
 		fmt.Printf("%d,%c \n", i, value)
 	}
 	//对str进行遍历，索引是i，值是value
+
+	//双重循环,定义标签可以任意停止循环
+label2:
+	for i := 1; i <= 5; i++ {
+		for j := 2; j <= 4; j++ {
+			fmt.Printf("i: %v, j: %v \n", i, j)
+			if i == 2 && j == 2 {
+				break label2
+			}
+		}
+	}
+
 }
