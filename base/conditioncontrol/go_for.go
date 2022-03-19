@@ -33,4 +33,15 @@ label2:
 		}
 	}
 
+	fmt.Println("========continue==========")
+	for i := 1; i <= 5; i++ {
+		for j := 2; j <= 4; j++ {
+			if i == 2 && j == 2 {
+				continue
+			}
+			fmt.Printf("i: %v, j: %v \n", i, j)
+		}
+
+		fmt.Println("----ok")
+	}
 }
